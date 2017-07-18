@@ -780,6 +780,7 @@ etc/firmware/a540_zap.b02
 etc/firmware/a540_zap.elf
 etc/firmware/a540_zap.mdt
 
+<<<<<<< HEAD
 # IMS
 bin/ims_rtp_daemon
 bin/imscmservice
@@ -815,6 +816,14 @@ vendor/lib64/libimscamera_jni.so
 vendor/lib64/libimsmedia_jni.so
 vendor/lib64/librcc.so
 vendor/lib64/libvoice-svc.so
+=======
+# IFAA
+bin/ifaadaemon
+lib/libteeclientjni.so
+lib64/libteeclientjni.so
+lib64/libteeclientjniv2.so
+priv-app/IFAAService/IFAAService.apk
+>>>>>>> c5d72b0... op5: add IFAA for Alipay fingerprint support
 
 # IPA
 bin/ipacm-diag
