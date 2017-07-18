@@ -301,6 +301,17 @@ PRODUCT_PROPERTY_OVERRIDES += \
 PRODUCT_PACKAGES += \
     sensors.msm8998
 
+# SOTER (Fingerprint support for WeChat Payment)
+PRODUCT_PACKAGES += \
+    soter
+
+PRODUCT_BOOT_JARS += \
+    soter
+
+# Vehicle network (for slim_daemon)
+PRODUCT_PACKAGES += \
+    libvehiclenetwork-native
+
 # Wifi
 PRODUCT_PACKAGES += \
     ipacm \
