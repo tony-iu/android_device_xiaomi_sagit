@@ -24,3 +24,4 @@ for var in eng user userdebug; do
   add_lunch_combo aicp_sagit-$var
 done
 cp -f device/xiaomi/sagit/aicp.mk vendor/aicp/products/sagit.mk
+sh device/xiaomi/sagit/patches/install.sh
