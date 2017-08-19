@@ -1126,12 +1126,6 @@ service esepmdaemon /system/vendor/bin/esepmdaemon
     user system
     group nfc
 
-# Seemp health service
-service seemp_healthd /system/vendor/bin/seemp_healthd
-    class late_start
-    user system
-    group system
-
 on charger
     setprop persist.sys.usb.config charging
     mkdir /dev/usb-ffs 0770 shell shell
