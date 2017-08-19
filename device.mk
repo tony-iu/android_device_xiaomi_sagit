@@ -283,6 +283,12 @@ PRODUCT_COPY_FILES += \
 PRODUCT_PACKAGES += \
     sensors.msm8998
 
+# Weather providers
+PRODUCT_PACKAGES += \
+    OpenWeatherMapWeatherProvider \
+    YahooWeatherProvider \
+    WundergroundWeatherProvider
+
 # Wifi
 PRODUCT_PACKAGES += \
     ipacm \
