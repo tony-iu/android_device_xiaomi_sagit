@@ -5,7 +5,6 @@
 
 <!--Repositories to replace-->
   <remove-project name="AICP/packages_apps_CMFileManager" />
-  <remove-project name="LineageOS/android_packages_apps_AudioFX" />
 
   <project name="LineageOS/android_external_busybox" path="external/busybox" revision="cm-14.1" />
   <project path="device/qcom/common" name="LineageOS/android_device_qcom_common" remote="github" revision="cm-14.1"/>
