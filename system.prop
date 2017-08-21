@@ -203,6 +203,9 @@ persist.dbg.wfc_avail_ovr=1
 # Wi-Fi
 wifi.interface=wlan0
 
+# SdcardFs
+ro.sys.sdcardfs=true
+
 # Hardware Info
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.device.chipset=Qualcomm MSM89998 Snapdragon 835
