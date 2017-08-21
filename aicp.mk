@@ -31,13 +31,6 @@ PRODUCT_BRAND := Xiaomi
 PRODUCT_MODEL := MI 6
 PRODUCT_MANUFACTURER := Xiaomi
 
-PRODUCT_PROPERTY_OVERRIDES += \
-    ro.ota.romname=AICP-SAGIT \
-    ro.ota.manifest=http://verevka.tk/ota/ota.xml \
-    ro.ota.version=$(shell date +%Y%m%d)
-
-PRODUCT_PACKAGES += OTAUpdates
-
 PRODUCT_BUILD_PROP_OVERRIDES += \
     BUILD_FINGERPRINT="Xiaomi/sagit/sagit:7.1.1/NMF26X/7.8.17:user/release-keys"
 
