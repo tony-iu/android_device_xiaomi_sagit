@@ -1,30 +1,52 @@
-#
-# Copyright 2014 The Android Open Source Project
-#
-# Licensed under the Apache License, Version 2.0 (the "License");
-# you may not use this file except in compliance with the License.
-# You may obtain a copy of the License at
-#
-#      http://www.apache.org/licenses/LICENSE-2.0
-#
-# Unless required by applicable law or agreed to in writing, software
-# distributed under the License is distributed on an "AS IS" BASIS,
-# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-# See the License for the specific language governing permissions and
-# limitations under the License.
-#
+LOCAL_PATH := $(call my-dir)
 
-LOCAL_PATH:= $(call my-dir)
+ifeq ($(call is-vendor-board-platform,QCOM),true)
+
+# HAL module implemenation stored in
+# hw/<POWERS_HARDWARE_MODULE_ID>.<ro.hardware>.so
+include $(CLEAR_VARS)
+
+LOCAL_MODULE_RELATIVE_PATH := hw
+LOCAL_SHARED_LIBRARIES := liblog libcutils libdl libxml2
+LOCAL_SRC_FILES := power.c metadata-parser.c utils.c list.c hint-data.c powerhintparser.c
+LOCAL_C_INCLUDES := external/libxml2/include \
+                    external/icu/icu4c/source/common
+
+# Include target-specific files.
+ifeq ($(call is-board-platform-in-list,msm8998), true)
+LOCAL_SRC_FILES += power-8998.c
+endif
+
+ifeq ($(TARGET_USES_INTERACTION_BOOST),true)
+    LOCAL_CFLAGS += -DINTERACTION_BOOST
+endif
+
+LOCAL_MODULE := power.msm8998
+LOCAL_MODULE_TAGS := optional
+LOCAL_CFLAGS := -Wno-unused-parameter -Wno-unused-variable
+include $(BUILD_SHARED_LIBRARY)
+
+
 
 include $(CLEAR_VARS)
 
-ifneq ($(TARGET_TAP_TO_WAKE_NODE),)
-LOCAL_CFLAGS += -DTAP_TO_WAKE_NODE=\"$(TARGET_TAP_TO_WAKE_NODE)\"
-endif
+LOCAL_SRC_FILES := powerhintparser.c
+
+LOCAL_MODULE := powerhint.qti
+
+
+LOCAL_SHARED_LIBRARIES := liblog libcutils libdl libxml2
+
+LOCAL_MODULE_TAGS := optional
+
+LOCAL_C_INCLUDES := external/libxml2/include \
+                    external/icu/icu4c/source/common
+
+
+LOCAL_CFLAGS := -Wno-unused-parameter -Wno-unused-variable
 
 LOCAL_MODULE_RELATIVE_PATH := hw
-LOCAL_SRC_FILES := power.c
-LOCAL_SHARED_LIBRARIES := liblog libcutils
-LOCAL_MODULE_TAGS := optional
-LOCAL_MODULE := power.msm8998
+
 include $(BUILD_SHARED_LIBRARY)
+
+endif

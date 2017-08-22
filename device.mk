@@ -249,7 +249,8 @@ PRODUCT_PACKAGES += \
 
 # Power
 PRODUCT_PACKAGES += \
-    power.msm8998
+    power.msm8998 \
+    powerhint.qti
 
 # QMI
 PRODUCT_PACKAGES += \
