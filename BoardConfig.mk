@@ -163,6 +163,9 @@ USE_DEVICE_SPECIFIC_CAMERA := true
 BOARD_CHARGER_ENABLE_SUSPEND := true
 BOARD_USE_CUSTOM_RECOVERY_FONT := \"roboto_23x41.h\"
 
+# Fast charging support
+HEALTHD_USE_FASTCHG_STATUS := true
+
 # CM Hardware
 BOARD_HARDWARE_CLASS += \
     hardware/cyanogen/cmhw \
