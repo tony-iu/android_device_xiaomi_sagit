@@ -184,6 +184,7 @@ ro.qti.sensors.sta_detect=true
 ro.qti.sensors.mot_detect=true
 ro.qti.sensors.dpc=true
 ro.qti.sensors.multishake=true
+ro.qti.sensors.taptap_gesture=true
 
 # Timeservice
 persist.timed.enable=true
