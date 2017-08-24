@@ -233,6 +233,7 @@ PRODUCT_COPY_FILES += \
 # Open gapps
 GAPPS_VARIANT := pico
 GAPPS_FORCE_MATCHING_DPI := true
+GAPPS_FORCE_BROWSER_OVERRIDES := true
 $(call inherit-product, vendor/opengapps/build/opengapps-packages.mk)
 
 # OMX
