@@ -232,8 +232,8 @@ PRODUCT_COPY_FILES += \
 
 # Open gapps
 GAPPS_VARIANT := pico
-
-$(call inherit-product, vendor/google/build/opengapps-packages.mk)
+GAPPS_FORCE_MATCHING_DPI := true
+$(call inherit-product, vendor/opengapps/build/opengapps-packages.mk)
 
 # OMX
 PRODUCT_PACKAGES += \
