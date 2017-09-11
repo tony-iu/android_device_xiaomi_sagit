@@ -237,10 +237,12 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/nfc/libnfc-nxp.conf:system/etc/libnfc-nxp.conf
 
 # Open gapps
-#GAPPS_VARIANT := pico
+GAPPS_VARIANT := pico
+GAPPS_FORCE_WEBVIEW_OVERRIDES := true
+GAPPS_PRODUCT_PACKAGES += Photos
 #GAPPS_FORCE_MATCHING_DPI := true
 #GAPPS_FORCE_BROWSER_OVERRIDES := true
-#$(call inherit-product, vendor/opengapps/build/opengapps-packages.mk)
+$(call inherit-product, vendor/opengapps/build/opengapps-packages.mk)
 
 # OMX
 PRODUCT_PACKAGES += \
