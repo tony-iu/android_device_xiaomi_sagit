@@ -59,6 +59,7 @@ qcom.bluetooth.soc=cherokee
 ro.bluetooth.a4wp=false
 ro.bluetooth.emb_wp_mode=false
 ro.bluetooth.wipower=false
+bluetooth.hfp.client=1
 
 # Bootloader status
 ro.boot.verifiedbootstate=green
