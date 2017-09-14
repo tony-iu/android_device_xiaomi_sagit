@@ -240,6 +240,7 @@ PRODUCT_COPY_FILES += \
 GAPPS_VARIANT := pico
 GAPPS_FORCE_WEBVIEW_OVERRIDES := true
 GAPPS_PRODUCT_PACKAGES += Photos
+GAPPS_PRODUCT_PACKAGES += Wallet
 #GAPPS_FORCE_MATCHING_DPI := true
 #GAPPS_FORCE_BROWSER_OVERRIDES := true
 $(call inherit-product, vendor/opengapps/build/opengapps-packages.mk)
