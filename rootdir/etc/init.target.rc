@@ -27,8 +27,6 @@
 #
 #
 
-import init.qcom.power.rc
-
 on early-init
     mkdir /firmware 0771 system system
     mkdir /bt_firmware 0771 system system
@@ -36,9 +34,6 @@ on early-init
     symlink /data/tombstones /tombstones
     write /proc/sys/kernel/sched_boost 1
     mkdir /persist 0771 root system
-
-    # Set permissions for dsp partition
-    mkdir /dsp 0771 media media
 
 on init
     write /dev/stune/foreground/schedtune.sched_boost_no_override 1
@@ -64,27 +59,13 @@ on fs
     # these partition flashed on the device. Failure to mount any partition in fstab file
     # results in failure to launch late-start class.
 
-    wait /dev/block/bootdevice/by-name/cache
-    mount ext4 /dev/block/bootdevice/by-name/cache /cache nosuid nodev barrier=1
-
     mkdir /persist/data 0700 system system
     mkdir /persist/wlan_bt 0700 system system
-    mkdir /persist/audio 0755 system system
+    mkdir /persist/audio 0700 system system
     mkdir /persist/bms 0700 root system
     restorecon_recursive /persist
 
-    wait /dev/block/bootdevice/by-name/dsp
-    mount ext4 /dev/block/bootdevice/by-name/dsp /dsp ro nosuid nodev barrier=1
-
-    wait /dev/block/bootdevice/by-name/modem
-    mount vfat /dev/block/bootdevice/by-name/modem /firmware ro shortname=lower,uid=1000,gid=1000,dmask=227,fmask=337,context=u:object_r:firmware_file:s0
-
-    wait /dev/block/bootdevice/by-name/bluetooth
-    mount vfat /dev/block/bootdevice/by-name/bluetooth /bt_firmware ro shortname=lower,uid=1002,gid=3002,dmask=227,fmask=337,context=u:object_r:bt_firmware_file:s0
-
     chmod 644 /persist/audio/us_manual_cal
-    
-    install_keyring
 
 on post-fs
     start qseecomd
@@ -102,6 +83,7 @@ on post-fs-data
     mkdir /tombstones/dsps 0771 system system
     mkdir /data/misc/qvop 0660 system system
     mkdir /data/misc/hbtp 0750 system system
+    mkdir /data/misc/seemp 0700 system system
     mkdir /data/nfc 0770 nfc nfc
     mkdir /data/fpc 0770 system system
     mkdir /data/fpc/s 0771 system system
@@ -115,9 +97,6 @@ on post-fs-data
     mkdir /data/misc/gf_data 0770 system system
     mkdir /data/misc/qdmastats 0700 system system
     mkdir /data/misc/qdma 0770 system system
-
-    # Create oemnvitems for RIL
-    mkdir /data/oemnvitems  0771 radio radio
 
 # For cpusets initialize for Silver Only first and then Silver + Gold
 # Silver Only configuration cannot work with 0-7
@@ -134,7 +113,6 @@ on boot
     write /dev/cpuset/foreground/boost/cpus 0-7
     write /dev/cpuset/background/cpus 0-7
     write /dev/cpuset/system-background/cpus 0-7
-    setprop ro.nfc.port "I2C"
     chmod 0660 /dev/pn553
     chown nfc nfc /dev/pn553
    ####Regionalization config and prop files####
@@ -168,8 +146,6 @@ on boot
    chmod 0700 /sys/bus/platform/devices/soc:fingerprint_fpc/device_prepare
    chmod 0700 /sys/bus/platform/devices/soc:fingerprint_fpc/vendor
    chmod 0600 /data/fpc/calibration_image.pndat
-   
-   setprop persist.camera.HAL3.enabled 1
 
 # access permission for Speaker SmartPA
     chmod 0666 /dev/i2c-10
@@ -206,8 +182,8 @@ on property:persist.adb.tcp.port=*
     stop adbd
     start adbd
 
-#on charger
-#    start hvdcp_opti
+on charger
+    start hvdcp_opti
 
 ## import cne init file
 service qvop-daemon /system/bin/qvop-daemon
@@ -510,6 +486,12 @@ on property:init.svc.zygote=restarting
 #    user system
 #    group system
 
+#service seempd /system/bin/seempd
+#    class late_start
+#    user system
+#    group system
+#    socket seempdw dgram 0666 system system
+
 service energy-awareness /system/bin/energy-awareness
     class main
     user system
@@ -595,6 +577,35 @@ service qdmastatsd /system/bin/qdmastatsd
     class late_start
     user system
     group system
+
+service readmac /system/bin/readmac
+    class main
+    user root
+    group root
+    oneshot
+
+on charger
+    write /sys/class/input/input0/enabled 0
+    write /sys/class/input/input1/enabled 0
+    write /sys/class/input/input2/enabled 0
+    write /sys/class/input/input3/enabled 0
+    write /sys/class/input/input4/enabled 0
+    write /sys/module/lpm_levels/parameters/sleep_disabled 0
+    write /sys/module/lpm_levels/system/system-pc/idle_enabled 0
+    write /sys/devices/system/cpu/cpu0/online 1
+    write /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor "userspace"
+    write /sys/devices/system/cpu/cpu0/cpufreq/scaling_max_freq 300000
+    write /sys/devices/system/cpu/cpu1/online 1
+    write /sys/devices/system/cpu/cpu1/cpufreq/scaling_governor "userspace"
+    write /sys/devices/system/cpu/cpu1/cpufreq/scaling_max_freq 300000
+    write /sys/devices/system/cpu/cpu2/online 0
+    write /sys/devices/system/cpu/cpu3/online 0
+    write /sys/devices/system/cpu/cpu4/online 0
+    write /sys/devices/system/cpu/cpu5/online 0
+    write /sys/devices/system/cpu/cpu6/online 0
+    write /sys/devices/system/cpu/cpu7/online 0
+    write /sys/module/msm_thermal/parameters/enabled "N"
+    start hvdcp_opti
 
 on property:slpi.restart=1
     write /sys/kernel/debug/msm_subsys/slpi restart
