@@ -70,11 +70,11 @@ vendor/lib64/libhwdaphal.so
 vendor/lib/soundfx/libqcbassboost.so
 vendor/lib/soundfx/libqcreverb.so
 vendor/lib/soundfx/libqcvirt.so
-vendor/lib/libadm.so
 vendor/lib/libacdb-fts.so
 vendor/lib/libacdbloader.so
 vendor/lib/libacdbrtac.so
 vendor/lib/libadiertac.so
+vendor/lib/libadm.so
 vendor/lib/libaudcal.so
 vendor/lib/libhwdaphal.so
 
@@ -100,13 +100,19 @@ etc/firmware/rampatch_tlv_3.2.tlv
 # Camera
 bin/mm-qcamera-daemon
 lib/hw/camera.msm8998.so
+lib/libCameraEffectJNI.so
 lib/libmmcamera_interface.so
 lib/libmmjpeg_interface.so
 lib/libmm-qcamera.so
 lib/libMiCameraHal.so
 lib/libmorpho_memory_allocator.so
 lib/libmorpho_panorama.so
+lib/libmorpho_groupshot.so
 lib/libqomx_core.so
+lib64/libCameraEffectJNI.so
+lib64/libmorpho_memory_allocator.so
+lib64/libmorpho_panorama.so
+lib64/libmorpho_groupshot.so
 vendor/lib/libarcsoft_beautyshot_image_algorithm.so
 vendor/lib/libarcsoft_beauty_shot.so
 vendor/lib/libarcsoft_beautyshot.so
@@ -220,7 +226,8 @@ vendor/lib64/liboptizoom.so
 vendor/lib64/libchromaflash.so
 vendor/lib64/libblurbuster.so
 
-#Camera app modules
+# Camera app modules
+framework/org.codeaurora.camera.jar
 vendor/lib64/libjni_optizoom.so
 vendor/lib64/libjni_chromaflash.so
 vendor/lib64/libjni_makeupV2.so
@@ -704,8 +711,8 @@ vendor/lib/mediadrm/libdrmclearkeyplugin.so
 vendor/lib/mediadrm/libwvdrmengine.so
 framework/com.android.mediadrm.signer.jar
 
+
 # Fingerprint
-lib64/hw/fingerprint.fpc.so
 lib/hw/fingerprint.goodix.so
 lib64/hw/fingerprint.goodix.so
 lib/libgoodixfingerprintd_binder.so
@@ -819,7 +826,6 @@ vendor/lib/librs_adreno.so
 vendor/lib/librs_adreno_sha1.so
 vendor/lib/libsd_sdk_display.so
 -vendor/lib/libsdm-disp-apis.so
-vendor/lib64/libtinyxml2_1.so
 
 # Graphics firmware
 etc/firmware/a530_gpmu.fw2
@@ -843,12 +849,12 @@ bin/imscmservice
 bin/imsdatadaemon
 bin/imsqmidaemon
 etc/permissions/imscm.xml
-etc/permissions/qti-vzw-ims-internal.xml
 framework/imscmlibrary.jar
 framework/rcsimssettings.jar
+vendor/framework/qti-vzw-ims-internal.jar
+etc/permissions/qti-vzw-ims-internal.xml
 -vendor/app/ims/ims.apk
 -vendor/app/imssettings/imssettings.apk
-vendor/framework/qti-vzw-ims-internal.jar
 vendor/lib64/lib-dplmedia.so
 vendor/lib64/lib-ims-rcscmjni.so
 vendor/lib64/lib-imsSDP.so
@@ -904,17 +910,17 @@ vendor/lib64/libmmosal.so
 vendor/lib64/libOmxAacDec.so
 vendor/lib64/libOmxEvrcDec.so
 vendor/lib64/libOmxQcelp13Dec.so
-vendor/lib/libOmxVideoDSMode.so
 vendor/lib64/libvpphvx.so
 vendor/lib/libI420colorconvert.so
-vendor/lib/libOmxAacDec.so
-vendor/lib/libOmxEvrcDec.so
-vendor/lib/libOmxQcelp13Dec.so
+vendor/lib/libmiracast.so
 vendor/lib/libmm-color-convertor.so
 vendor/lib/libmmosal.so
+vendor/lib/libOmxAacDec.so
+vendor/lib/libOmxEvrcDec.so
+vendor/lib/libOmxVideoDSMode.so
+vendor/lib/libOmxQcelp13Dec.so
 vendor/lib/libvpphvx.so
 vendor/lib/libvqzip.so
-vendor/lib/libmiracast.so
 
 # Network
 -priv-app/QtiTetherService/QtiTetherService.apk
@@ -963,6 +969,7 @@ vendor/lib/libperipheral_client.so
 # Postprocessing
 etc/permissions/com.qti.snapdragon.sdk.display.xml
 framework/com.qti.snapdragon.sdk.display.jar
+framework/QPerformance.jar
 -vendor/app/colorservice/colorservice.apk
 vendor/bin/mm-pp-dpps
 vendor/lib64/libdisp-aba.so
