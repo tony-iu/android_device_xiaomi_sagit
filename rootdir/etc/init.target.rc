@@ -579,7 +579,7 @@ service qdmastatsd /system/bin/qdmastatsd
     group system
 
 service readmac /system/bin/readmac
-    class main
+    class late_start
     user root
     group root
     oneshot
