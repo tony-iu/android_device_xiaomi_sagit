@@ -26,7 +26,7 @@
        2 = left side
        3 = right side
   -->
-  <integer name="config_fingerprintSensorLocation">1</integer>
+  <!-- <integer name="config_fingerprintSensorLocation">1</integer> -->
 
   <bool name="config_voice_over_lte_enabled">true</bool>
 </resources>
