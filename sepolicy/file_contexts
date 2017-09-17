@@ -25,3 +25,4 @@
 
 # Binaries
 /system/bin/readmac                   u:object_r:readmac_exec:s0
+
