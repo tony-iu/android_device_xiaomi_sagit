@@ -26,8 +26,9 @@ Camera  | Dual 12 MP, f/2.0, phase detection autofocus, dual-LED (dual tone) fla
 ![Xiaomi Mi 6](http://i8.mifile.cn/a1/pms_1492571518.47778002!560x560.jpg "Xiaomi Mi 6 in black")
 
 ### Thanks to:
+ * Code Aurora Forum
  * LineageOS team
  * thune-xiaobai
  * DanWard
- * Vgdn1942
+ * Verevka
 
