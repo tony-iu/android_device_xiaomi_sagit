@@ -19,12 +19,12 @@ import common
 import re
 
 def FullOTA_Assertions(info):
-  AddTrustZoneAssertion(info, info.input_zip)
+  AddModemAssertion(info, info.input_zip)
   AddFileEncryptionAssertion(info)
   return
 
 def IncrementalOTA_Assertions(info):
-  AddTrustZoneAssertion(info, info.target_zip)
+  AddModemAssertion(info, info.target_zip)
   AddFileEncryptionAssertion(info)
   return
 
