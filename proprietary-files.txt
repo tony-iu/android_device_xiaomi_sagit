@@ -739,7 +739,6 @@ framework/izat.xt.srv.jar
 -lib64/libloc_api_v02.so
 lib64/libloc_ds_api.so
 -priv-app/com.qualcomm.location/com.qualcomm.location.apk
-vendor/bin/slim_daemon
 vendor/lib64/hw/flp.default.so
 vendor/lib64/libalarmservice_jni.so
 vendor/lib64/libdataitems.so
@@ -753,8 +752,6 @@ vendor/lib64/libizat_client_api.so
 vendor/lib64/libizat_core.so
 vendor/lib64/liblbs_core.so
 vendor/lib64/liblowi_client.so
-vendor/lib64/liblowi_wifihal.so
-vendor/lib64/liblowi_wifihal_nl.so
 vendor/lib64/libquipc_os_api.so
 vendor/lib64/libulp2.so
 vendor/lib64/libxt_native.so
@@ -943,14 +940,18 @@ vendor/etc/perf-profile3.conf
 vendor/etc/perf-profile4.conf
 vendor/etc/perf-profile5.conf
 vendor/etc/perf-profile6.conf
+vendor/lib64/libqti-at.so
 vendor/lib64/libqti-iop-client.so
 vendor/lib64/libqti-iop.so
 vendor/lib64/libqti-perfd-client.so
+vendor/lib64/libqti_performance.so
 vendor/lib64/libqti-util.so
 vendor/lib64/libqti-utils.so
+vendor/lib/libqti-at.so
 vendor/lib/libqti-iop-client.so
 vendor/lib/libqti-iop.so
 vendor/lib/libqti-perfd-client.so
+vendor/lib/libqti_performance.so
 vendor/lib/libqti-util.so
 vendor/lib/libqti-utils.so
 
