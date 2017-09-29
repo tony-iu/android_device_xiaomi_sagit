@@ -1,4 +1,7 @@
-ro.display.series=Xiaomi MI6
+# fingerprint
+ro.boot.fingerprint=goodix
+
+ro.sf.lcd_density=480
 
 # AANC
 persist.aanc.enable=true
