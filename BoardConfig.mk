@@ -48,7 +48,6 @@ TARGET_BOOTLOADER_BOARD_NAME := msm8998
 TARGET_NO_BOOTLOADER := true
 
 # Kernel
-BOARD_CUSTOM_BOOTIMG_MK := $(DEVICE_PATH)/mkbootimg.mk
 BOARD_KERNEL_BASE := 0x00000000
 BOARD_KERNEL_CMDLINE := \
         androidboot.hardware=qcom \
@@ -69,13 +68,8 @@ BOARD_RAMDISK_OFFSET := 0x01000000
 TARGET_KERNEL_ARCH := arm64
 TARGET_KERNEL_HEADER_ARCH := arm64
 TARGET_KERNEL_SOURCE := kernel/xiaomi/msm8998
-TARGET_KERNEL_CONFIG := msm_defconfig
+TARGET_KERNEL_CONFIG := sagit_user_defconfig
 TARGET_KERNEL_CROSS_COMPILE_PREFIX := aarch64-linux-android-
-TARGET_KERNEL_BUILD_VARIANT := user
-TARGET_PREBUILT_KERNEL := device/xiaomi/sagit/prebuilt/kernel
-
-# Enable real time lockscreen charging current values
-BOARD_GLOBAL_CFLAGS += -DBATTERY_REAL_INFO
 
 # Platform
 TARGET_BOARD_PLATFORM := msm8998
